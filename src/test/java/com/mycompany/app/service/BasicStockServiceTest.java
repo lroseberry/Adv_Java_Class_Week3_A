@@ -16,7 +16,7 @@ import java.util.*;
  * @author Linda M Roseberry
  */
 public class BasicStockServiceTest {
-	private BasicStockService basicStockService;
+	private BasicStockService stockService;
 	private String symbol;
 	private double price;
 	private Calendar startDate;
@@ -24,7 +24,7 @@ public class BasicStockServiceTest {
 
     @Before
     public void setup() {  
-		basicStockService = (BasicStockService) StockServiceFactory.createStockService("BASIC");
+		stockService = (BasicStockService) StockServiceFactory.createStockService();
 		symbol = "APPL";
 		price = 163.5;
 		startDate = Calendar.getInstance();
@@ -37,7 +37,7 @@ public class BasicStockServiceTest {
      */
     @Test
     public final void testGetQuoteOneArgSymPositive() {
-		assertTrue("The returned string is correct",basicStockService.getQuote(symbol).getSymbol().equals(symbol));
+		assertTrue("The returned string is correct",stockService.getQuote(symbol).getSymbol().equals(symbol));
     }
 
     /**
@@ -46,7 +46,7 @@ public class BasicStockServiceTest {
     @Test
     public final void testGetQuoteOneArgSymNegative() {
 		String expected = "IBM";
-        assertFalse("The returned string does not match the expected result", basicStockService.getQuote(symbol).getSymbol().equals(expected));
+        assertFalse("The returned string does not match the expected result", stockService.getQuote(symbol).getSymbol().equals(expected));
     }
 	
 	/**
@@ -54,7 +54,7 @@ public class BasicStockServiceTest {
      */
     @Test
     public final void testGetQuoteOneArgDatePositive() {
-		assertTrue("The returned date is correct",basicStockService.getQuote(symbol).getQuoteDate().equals(startDate));
+		assertTrue("The returned date is correct",stockService.getQuote(symbol).getQuoteDate().equals(startDate));
     }
 
     /**
@@ -62,7 +62,7 @@ public class BasicStockServiceTest {
      */
     @Test
     public final void testGetQuoteOneArgDateNegative() {
-        assertFalse("The returned date does not match the expected result", basicStockService.getQuote(symbol).getQuoteDate().equals(endDate));
+        assertFalse("The returned date does not match the expected result", stockService.getQuote(symbol).getQuoteDate().equals(endDate));
     }
 	
 	/**
@@ -70,7 +70,7 @@ public class BasicStockServiceTest {
      */
     @Test
     public final void testGetQuoteOneArgPricePositive() {	
-		assertTrue("The returned price is correct",basicStockService.getQuote(symbol).getPrice()==(price));
+		assertTrue("The returned price is correct",stockService.getQuote(symbol).getPrice()==(price));
     }
 
     /**
@@ -79,7 +79,7 @@ public class BasicStockServiceTest {
     @Test
     public final void testGetQuoteOneArgPriceNegative() {
 		Double expectedPrice = 999.9;
-        assertFalse("The returned price does not match the expected result", basicStockService.getQuote(symbol).getPrice() == (expectedPrice));
+        assertFalse("The returned price does not match the expected result", stockService.getQuote(symbol).getPrice() == (expectedPrice));
     }
 	
 	/**
@@ -88,7 +88,7 @@ public class BasicStockServiceTest {
 	@Test
 	public final void testGetQuoteThreeArgsSymPositive() {
 		 assertTrue("Symbol returned from return value of getQuote equals parameter string",
-                basicStockService.getQuote(symbol, startDate, endDate).get(0).getSymbol().equals(symbol));
+                stockService.getQuote(symbol, startDate, endDate).get(0).getSymbol().equals(symbol));
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class BasicStockServiceTest {
     @Test
     public final void testGetQuoteThreeArgSymNegative() {
         assertFalse("Symbol returned from return value of getQuote equals lowercase-coverted parameter string",
-                basicStockService.getQuote(symbol, startDate, endDate).get(0).getSymbol().equals(symbol.toLowerCase()));
+                stockService.getQuote(symbol, startDate, endDate).get(0).getSymbol().equals(symbol.toLowerCase()));
     }
 	
 	/**
@@ -106,7 +106,7 @@ public class BasicStockServiceTest {
 	@Test
 	public final void testGetQuoteThreeArgsDatePositive() {
 		 assertTrue("Date returned from return value of getQuote is correct",
-                basicStockService.getQuote(symbol, startDate, endDate).get(0).getQuoteDate().equals(startDate));
+                stockService.getQuote(symbol, startDate, endDate).get(0).getQuoteDate().equals(startDate));
 	}
 	
 	/**
@@ -115,7 +115,7 @@ public class BasicStockServiceTest {
     @Test
     public final void testGetQuoteThreeArgDateNegative() {
         assertFalse("Date returned from return value of getQuote is not expected",
-                basicStockService.getQuote(symbol, startDate, endDate).get(0).getQuoteDate().equals(endDate));
+                stockService.getQuote(symbol, startDate, endDate).get(0).getQuoteDate().equals(endDate));
     } 
 	
 }
