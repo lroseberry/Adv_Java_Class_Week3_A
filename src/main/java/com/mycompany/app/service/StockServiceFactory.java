@@ -18,12 +18,8 @@ public class StockServiceFactory {
 * @return an object that implements the StockService interface
 */
 
-    public static StockService createStockService(String type){
+    public static StockService createStockService(){
 
-        if(type.equalsIgnoreCase("BASIC")){
             return new BasicStockService();
-        }
-
-        return null;
     }
 }

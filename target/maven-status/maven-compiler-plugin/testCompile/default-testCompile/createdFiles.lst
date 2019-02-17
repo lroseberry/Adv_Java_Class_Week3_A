@@ -1,0 +1,4 @@
+com\mycompany\app\service\StockServiceFactoryTest.class
+com\mycompany\app\service\BasicStockServiceTest.class
+com\mycompany\app\application\StockQuoteApplicationTest.class
+com\mycompany\app\model\StockQuoteTest.class

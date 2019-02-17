@@ -15,15 +15,14 @@ public class StockQuoteApplication {
      */
     public static void main(String[] args) {
 
-        StockServiceFactory stockServiceFactory = new StockServiceFactory();
-        StockService basicService = stockServiceFactory.createStockService("BASIC");
+        StockService stockService = StockServiceFactory.createStockService();
 		
-        StockQuote stockQuote1 = basicService.getQuote(args[0]);
+        StockQuote stockQuote1 = stockService.getQuote(args[0]);
 		
 		Calendar startDate = formatDate(args[1]);
 		Calendar endDate = formatDate(args[2]);
 	
-        List<StockQuote> stockQuote2 = basicService.getQuote(args[0], startDate, endDate);
+        List<StockQuote> stockQuote2 = stockService.getQuote(args[0], startDate, endDate);
 	}
   
 	 /**

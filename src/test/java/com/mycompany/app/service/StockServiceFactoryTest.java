@@ -20,7 +20,7 @@ public class StockServiceFactoryTest {
      */
     @Test
     public void testGetStockServicePositive() {
-        assertTrue("The value returned from getStockService is an instance of StockService interface",StockServiceFactory.createStockService("BASIC") instanceof StockService);
+        assertTrue("The value returned from getStockService is an instance of StockService interface",StockServiceFactory.createStockService() instanceof StockService);
     }
 
     /**
@@ -28,6 +28,6 @@ public class StockServiceFactoryTest {
      */
     @Test
     public void testGetStockServiceNegative() {
-        assertFalse("The value returned from getStockService is an instance of Calendar class",StockServiceFactory.createStockService("BASIC") instanceof Calendar);
+        assertFalse("The value returned from getStockService is an instance of Calendar class",StockServiceFactory.createStockService() instanceof Calendar);
     }
 }
